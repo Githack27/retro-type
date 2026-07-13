@@ -26,7 +26,7 @@ app.use(
 // CORS setup (for direct API access if needed; Next.js rewrite also handles proxying)
 app.use(
   cors({
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:3000', 'https://retro-type-three.vercel.app'],
     credentials: true,
   })
 );
