@@ -263,7 +263,7 @@ export default function About() {
           </div>
           {/* Rank 2 */}
           <div className="about-rank-card">
-            <div className="badge-card badge-bronze">
+            <div className="badge-card badge-silver">
               <BadgeIcon name="Apprentice" />
             </div>
             <h5 className="about-rank-name">Apprentice</h5>
@@ -272,7 +272,7 @@ export default function About() {
           </div>
           {/* Rank 3 */}
           <div className="about-rank-card">
-            <div className="badge-card badge-bronze">
+            <div className="badge-card badge-silver">
               <BadgeIcon name="Writer" />
             </div>
             <h5 className="about-rank-name">Writer</h5>
@@ -290,7 +290,7 @@ export default function About() {
           </div>
           {/* Rank 5 */}
           <div className="about-rank-card">
-            <div className="badge-card badge-silver">
+            <div className="badge-card badge-platinum">
               <BadgeIcon name="Scribe" />
             </div>
             <h5 className="about-rank-name">Scribe</h5>
@@ -299,7 +299,7 @@ export default function About() {
           </div>
           {/* Rank 6 */}
           <div className="about-rank-card">
-            <div className="badge-card badge-gold">
+            <div className="badge-card badge-platinum">
               <BadgeIcon name="Author" />
             </div>
             <h5 className="about-rank-name">Author</h5>
@@ -317,7 +317,7 @@ export default function About() {
           </div>
           {/* Rank 8 */}
           <div className="about-rank-card">
-            <div className="badge-card badge-platinum">
+            <div className="badge-card badge-gold">
               <BadgeIcon name="Legend" />
             </div>
             <h5 className="about-rank-name">Legend</h5>
@@ -377,17 +377,6 @@ export default function About() {
                 <span className="contact-label">Feedback / Support</span>
                 <a href="mailto:support@retrotype.com" className="contact-link">support@retrotype.com</a>
               </div>
-            </div>
-          </div>
-
-          <div className="about-contact-card-wrapper">
-            <div className="about-contact-paper-card">
-              <p className="contact-paper-text">
-                Have a question, suggestion,<br />
-                or just want to say hi?<br />
-                We're always here for you.
-              </p>
-              <p className="contact-paper-signature">- The RetroType Team</p>
             </div>
           </div>
         </div>

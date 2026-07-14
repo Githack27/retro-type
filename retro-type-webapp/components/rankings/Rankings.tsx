@@ -33,22 +33,23 @@ export default function Rankings() {
 
   const getBadgeClass = (badgeName: string) => {
     const name = badgeName.toLowerCase();
-    if (name.includes('legend') || name.includes('maestro')) {
-      return 'badge-platinum';
-    }
-    if (
-      name.includes('typist') || 
-      name.includes('scribe') || 
-      name.includes('author') || 
-      name.includes('precision') || 
-      name.includes('grandmaster')
-    ) {
+    if (name.includes('legend')) {
       return 'badge-gold';
     }
     if (
-      name.includes('apprentice') || 
-      name.includes('writer') || 
-      name.includes('sniper') || 
+      name.includes('maestro') ||
+      name.includes('author') ||
+      name.includes('scribe') ||
+      name.includes('precision') ||
+      name.includes('grandmaster')
+    ) {
+      return 'badge-platinum';
+    }
+    if (
+      name.includes('typist') ||
+      name.includes('apprentice') ||
+      name.includes('writer') ||
+      name.includes('sniper') ||
       name.includes('wordsmith')
     ) {
       return 'badge-silver';

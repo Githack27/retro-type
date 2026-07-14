@@ -2063,8 +2063,7 @@ body::after {
   border-radius: 6px;
   padding: 15px 20px;
   transition: all 0.3s ease;
-  width: 100%;
-  max-width: 400px;
+  width: 300px;
 }
 
 .about-contact-item:hover {
@@ -2287,10 +2286,19 @@ body::after {
 .badge-icon-svg {
   width: 44px;
   height: 44px;
-  color: inherit;
   margin-bottom: 2px;
   opacity: 0.95;
   transition: transform 0.3s ease;
+  stroke: #ffffff !important;
+  color: #ffffff !important;
+}
+
+.badge-icon-svg * {
+  stroke: #ffffff !important;
+}
+
+.badge-icon-svg [fill="currentColor"] {
+  fill: #ffffff !important;
 }
 
 .badge-card:hover .badge-icon-svg {
@@ -2300,9 +2308,18 @@ body::after {
 .badge-card-mini .badge-icon-svg {
   width: 22px;
   height: 22px;
-  color: inherit;
   margin-bottom: 0;
   opacity: 0.95;
+  stroke: #ffffff !important;
+  color: #ffffff !important;
+}
+
+.badge-card-mini .badge-icon-svg * {
+  stroke: #ffffff !important;
+}
+
+.badge-card-mini .badge-icon-svg [fill="currentColor"] {
+  fill: #ffffff !important;
 }
 
 /* ==========================================================================
@@ -2312,7 +2329,6 @@ body::after {
 .about-section-label,
 .about-how-title,
 .about-metric-title,
-.about-rank-name,
 .contact-label {
   font-family: 'Moldie Demo', var(--font-typewriter), monospace !important;
 }
@@ -2326,6 +2342,7 @@ body::after {
 .contact-link,
 .contact-paper-text,
 .contact-paper-signature,
+.about-rank-name,
 .about-quote-footer {
   font-family: 'Special Elite', var(--font-mono), monospace !important;
 }
