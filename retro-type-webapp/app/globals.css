@@ -1651,7 +1651,7 @@ body::after {
 }
 
 .about-section-label {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: normal;
   letter-spacing: 4px;
   color: var(--color-gold);
@@ -1679,7 +1679,7 @@ body::after {
 }
 
 .about-hero-title {
-  font-size: 48px;
+  font-size: 54px;
   color: var(--color-cream);
   margin-bottom: 20px;
   letter-spacing: 0.5px;
@@ -1687,7 +1687,7 @@ body::after {
 }
 
 .about-hero-description {
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1.6;
   color: #dfd7be;
   margin-bottom: 15px;
@@ -1695,7 +1695,7 @@ body::after {
 }
 
 .about-hero-subdescription {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
   color: var(--color-muted);
   margin-bottom: 35px;
@@ -1751,7 +1751,7 @@ body::after {
 }
 
 .about-feature-title {
-  font-size: 12.5px;
+  font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--color-cream);
@@ -1841,7 +1841,7 @@ body::after {
 }
 
 .about-how-title {
-  font-size: 16px;
+  font-size: 20px;
   color: var(--color-cream);
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -1849,7 +1849,7 @@ body::after {
 }
 
 .about-how-desc {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-muted);
   line-height: 1.5;
 }
@@ -1929,20 +1929,20 @@ body::after {
 }
 
 .about-metric-title {
-  font-size: 15.5px;
+  font-size: 20px;
   color: var(--color-gold);
   margin-bottom: 6px;
   text-transform: uppercase;
 }
 
 .about-metric-desc {
-  font-size: 13.5px;
+  font-size: 16px;
   color: var(--color-muted);
   line-height: 1.4;
 }
 
 .about-quote-footer {
-  font-size: 14.5px;
+  font-size: 18px;
   color: var(--color-gold);
   margin-top: 35px;
   letter-spacing: 2px;
@@ -1952,7 +1952,7 @@ body::after {
 
 /* LEVELS & RANKS */
 .about-levels-subtitle {
-  font-size: 16.5px;
+  font-size: 20px;
   color: var(--color-muted);
   margin-top: 10px;
   margin-bottom: 30px;
@@ -1992,7 +1992,7 @@ body::after {
 }
 
 .about-rank-name {
-  font-size: 15px;
+  font-size: 18px;
   color: var(--color-cream);
   margin-top: 12px;
   margin-bottom: 4px;
@@ -2000,7 +2000,7 @@ body::after {
 }
 
 .about-rank-wpm {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--color-gold);
   letter-spacing: 0.5px;
   margin-bottom: 10px;
@@ -2008,7 +2008,7 @@ body::after {
 }
 
 .about-rank-desc {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--color-muted);
   line-height: 1.4;
   word-wrap: break-word;
@@ -2095,7 +2095,7 @@ body::after {
 }
 
 .contact-label {
-  font-size: 11.5px;
+  font-size: 14px;
   text-transform: uppercase;
   color: var(--color-muted);
   letter-spacing: 0.5px;
@@ -2103,7 +2103,7 @@ body::after {
 }
 
 .contact-link {
-  font-size: 15.5px;
+  font-size: 18px;
   color: var(--color-cream);
   text-decoration: none;
   transition: color 0.2s ease;
@@ -2142,7 +2142,7 @@ body::after {
 }
 
 .contact-paper-text {
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1.8;
   color: #2b1f15;
   margin-bottom: 20px;
@@ -2150,7 +2150,7 @@ body::after {
 }
 
 .contact-paper-signature {
-  font-size: 17px;
+  font-size: 20px;
   color: #402f20;
   font-weight: bold;
   text-align: right;
@@ -2166,8 +2166,8 @@ body::after {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 72px;
-  height: 72px;
+  width: 100px;
+  height: 100px;
   background: none !important;
   border: none !important;
   box-shadow: none !important;
@@ -2196,8 +2196,8 @@ body::after {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   background: none !important;
   border: none !important;
   box-shadow: none !important;
@@ -2219,8 +2219,8 @@ body::after {
 
 /* Image element inside the badge */
 .badge-image-el {
-  width: 58px;
-  height: 58px;
+  width: 86px;
+  height: 86px;
   object-fit: contain;
   transition: transform 0.3s ease;
   display: block;
@@ -2231,13 +2231,13 @@ body::after {
 }
 
 .badge-card-mini .badge-image-el {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
 }
 
 /* Badge name layout in badge-card */
 .badge-name {
-  font-size: 11px;
+  font-size: 13px;
   margin-top: 5px;
   line-height: 1.1;
   max-width: 80px;
@@ -2248,8 +2248,8 @@ body::after {
 }
 
 .badge-icon-svg {
-  width: 44px;
-  height: 44px;
+  width: 64px;
+  height: 64px;
   margin-bottom: 2px;
   opacity: 0.95;
   transition: transform 0.3s ease;
@@ -2270,8 +2270,8 @@ body::after {
 }
 
 .badge-card-mini .badge-icon-svg {
-  width: 22px;
-  height: 22px;
+  width: 30px;
+  height: 30px;
   margin-bottom: 0;
   opacity: 0.95;
   stroke: #ffffff !important;
@@ -2309,7 +2309,7 @@ body::after {
 .about-rank-name,
 .about-quote-footer {
   font-family: 'Special Elite', var(--font-mono), monospace !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
 }
 
 
