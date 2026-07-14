@@ -1651,7 +1651,6 @@ body::after {
 }
 
 .about-section-label {
-  font-family: var(--font-serif);
   font-size: 13px;
   font-weight: normal;
   letter-spacing: 4px;
@@ -1680,7 +1679,6 @@ body::after {
 }
 
 .about-hero-title {
-  font-family: var(--font-typewriter);
   font-size: 42px;
   color: var(--color-cream);
   margin-bottom: 20px;
@@ -1843,7 +1841,6 @@ body::after {
 }
 
 .about-how-title {
-  font-family: var(--font-mono);
   font-size: 14px;
   color: var(--color-cream);
   margin-bottom: 10px;
@@ -1906,7 +1903,6 @@ body::after {
   align-items: center;
   justify-content: center;
   color: var(--color-cream);
-  font-family: var(--font-typewriter);
   font-size: 11px;
   font-weight: bold;
   background: rgba(15, 15, 14, 0.3);
@@ -1933,7 +1929,6 @@ body::after {
 }
 
 .about-metric-title {
-  font-family: var(--font-mono);
   font-size: 13.5px;
   color: var(--color-gold);
   margin-bottom: 6px;
@@ -1947,7 +1942,6 @@ body::after {
 }
 
 .about-quote-footer {
-  font-family: var(--font-serif);
   font-size: 12.5px;
   color: var(--color-gold);
   margin-top: 35px;
@@ -1998,7 +1992,6 @@ body::after {
 }
 
 .about-rank-name {
-  font-family: var(--font-mono);
   font-size: 13px;
   color: var(--color-cream);
   margin-top: 12px;
@@ -2007,7 +2000,6 @@ body::after {
 }
 
 .about-rank-wpm {
-  font-family: var(--font-typewriter);
   font-size: 10px;
   color: var(--color-gold);
   letter-spacing: 0.5px;
@@ -2023,6 +2015,21 @@ body::after {
 }
 
 /* CONTACT US */
+.about-contact-section {
+  background-image: url('/images/contact-us-background.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  padding: 50px 40px;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.75),
+    inset 0 0 100px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  border: 1px solid rgba(140, 130, 108, 0.25);
+  margin-bottom: 50px;
+  position: relative;
+}
+
 .about-contact-grid {
   display: grid;
   grid-template-columns: 1.1fr 1.2fr;
@@ -2042,23 +2049,27 @@ body::after {
 .about-contact-info {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .about-contact-item {
   display: flex;
   align-items: center;
   gap: 20px;
-  background: rgba(15, 15, 14, 0.25);
-  border: 1px solid rgba(140, 130, 108, 0.15);
+  background: rgba(15, 15, 14, 0.75);
+  border: 1px solid rgba(140, 130, 108, 0.3);
   border-radius: 6px;
   padding: 15px 20px;
   transition: all 0.3s ease;
+  width: 100%;
+  max-width: 400px;
 }
 
 .about-contact-item:hover {
   border-color: var(--color-gold);
-  background: rgba(197, 155, 39, 0.03);
+  background: rgba(197, 155, 39, 0.08);
 }
 
 .contact-icon {
@@ -2093,7 +2104,6 @@ body::after {
 }
 
 .contact-link {
-  font-family: var(--font-typewriter);
   font-size: 13.5px;
   color: var(--color-cream);
   text-decoration: none;
@@ -2113,9 +2123,8 @@ body::after {
   width: 100%;
   max-width: 440px;
   aspect-ratio: 1.25;
-  background-image: url('/images/contact-us-background.png');
-  background-size: cover;
-  background-position: center;
+  background-color: #fbf6eb;
+  background-image: radial-gradient(circle, #fbf6eb 30%, #e6d8b8 100%);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -2125,6 +2134,7 @@ body::after {
   transform: rotate(2deg);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   position: relative;
+  border: 1px solid rgba(140, 130, 108, 0.15);
 }
 
 .about-contact-paper-card:hover {
@@ -2133,7 +2143,6 @@ body::after {
 }
 
 .contact-paper-text {
-  font-family: var(--font-serif);
   font-size: 16px;
   line-height: 1.8;
   color: #2b1f15;
@@ -2142,7 +2151,6 @@ body::after {
 }
 
 .contact-paper-signature {
-  font-family: var(--font-serif);
   font-size: 15px;
   color: #402f20;
   font-weight: bold;
@@ -2150,39 +2158,176 @@ body::after {
   letter-spacing: 1px;
 }
 
-/* Badge layout updates */
+/* ==========================================================================
+   HEXAGONAL COLOR BADGE STYLES (improved readability & contrast)
+   ========================================================================== */
+.badge-card {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background-color: var(--badge-border-color, #c59b27);
+  color: var(--badge-text-color, #3e2a14);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+  word-break: break-word;
+  user-select: none;
+  z-index: 1;
+}
+
+.badge-card::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: var(--badge-bg-color, #fbf8f0);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.badge-card:hover {
+  transform: translateY(-5px) scale(1.06);
+}
+
+.badge-card-mini {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background-color: var(--badge-border-color, #c59b27);
+  color: var(--badge-text-color, #3e2a14);
+  cursor: help;
+  transition: all 0.2s ease;
+  user-select: none;
+  z-index: 1;
+}
+
+.badge-card-mini::before {
+  content: '';
+  position: absolute;
+  top: 1.5px;
+  left: 1.5px;
+  right: 1.5px;
+  bottom: 1.5px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: var(--badge-bg-color, #fbf8f0);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.badge-card-mini:hover {
+  transform: translateY(-2px) scale(1.1);
+}
+
+/* Bronze Keycap Badge */
+.badge-bronze {
+  --badge-border-color: #a6673a;
+  --badge-bg-color: radial-gradient(circle, #8c532b 0%, #593114 100%);
+  --badge-text-color: #fcf6e8;
+}
+.badge-bronze:hover {
+  --badge-border-color: #ffdcb5;
+}
+
+/* Silver Keycap Badge */
+.badge-silver {
+  --badge-border-color: #a8afb2;
+  --badge-bg-color: radial-gradient(circle, #8c9296 0%, #52585c 100%);
+  --badge-text-color: #ffffff;
+}
+.badge-silver:hover {
+  --badge-border-color: #ffffff;
+}
+
+/* Gold Keycap Badge */
+.badge-gold {
+  --badge-border-color: #ffe180;
+  --badge-bg-color: radial-gradient(circle, #d4a92c 0%, #876510 100%);
+  --badge-text-color: #1c1400;
+}
+.badge-gold:hover {
+  --badge-border-color: #ffe69c;
+}
+
+/* Platinum/Legendary Keycap Badge */
+.badge-platinum {
+  --badge-border-color: #c7e8e8;
+  --badge-bg-color: radial-gradient(circle, #9ec4c4 0%, #4f7878 100%);
+  --badge-text-color: #0a1c1c;
+}
+.badge-platinum:hover {
+  --badge-border-color: #ffffff;
+}
+
+/* Badge name layout in badge-card */
 .badge-name {
   font-size: 9px;
   margin-top: 5px;
   line-height: 1.1;
   max-width: 80px;
-  font-family: var(--font-mono);
   word-wrap: break-word;
   white-space: normal;
-  color: #3e2a14;
   text-align: center;
+  color: inherit;
 }
 
 .badge-icon-svg {
-  width: 32px;
-  height: 32px;
-  color: #5c4033;
+  width: 44px;
+  height: 44px;
+  color: inherit;
   margin-bottom: 2px;
-  opacity: 0.85;
-  transition: transform 0.3s ease, color 0.3s ease;
+  opacity: 0.95;
+  transition: transform 0.3s ease;
 }
 
 .badge-card:hover .badge-icon-svg {
   transform: scale(1.15) rotate(-3deg);
-  color: #2b1a08;
 }
 
 .badge-card-mini .badge-icon-svg {
-  width: 18px;
-  height: 18px;
-  color: #3e2a14;
+  width: 22px;
+  height: 22px;
+  color: inherit;
   margin-bottom: 0;
-  opacity: 0.9;
+  opacity: 0.95;
+}
+
+/* ==========================================================================
+   FONT PAIRING OVERRIDES (Moldie Demo for titles, Special Elite for content)
+   ========================================================================== */
+.about-hero-title,
+.about-section-label,
+.about-how-title,
+.about-metric-title,
+.about-rank-name,
+.contact-label {
+  font-family: 'Moldie Demo', var(--font-typewriter), monospace !important;
+}
+
+.about-hero-description,
+.about-hero-subdescription,
+.about-how-desc,
+.about-metric-desc,
+.about-rank-desc,
+.about-levels-subtitle,
+.contact-link,
+.contact-paper-text,
+.contact-paper-signature,
+.about-quote-footer {
+  font-family: 'Special Elite', var(--font-mono), monospace !important;
 }
 
 
