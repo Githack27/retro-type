@@ -5,9 +5,9 @@ services:
       dockerfile: Dockerfile
     container_name: retro-type-webapp
     ports:
-      - "3000:3000"
+      - "10000:10000"
     environment:
-      - PORT=3000
+      - PORT=10000
       - API_URL=http://host.docker.internal:5000
     extra_hosts:
       - "host.docker.internal:host-gateway"
