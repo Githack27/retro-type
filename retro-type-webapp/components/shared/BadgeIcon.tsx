@@ -8,6 +8,17 @@ interface BadgeIconProps {
 export default function BadgeIcon({ name, className = "badge-icon-svg" }: BadgeIconProps) {
   const cleanName = name.split(' (')[0].trim().toLowerCase();
 
+  const imageBadges = ['novice', 'apprentice', 'writer', 'typist'];
+  if (imageBadges.includes(cleanName)) {
+    return (
+      <img 
+        src={`/images/${cleanName}-badge.png`} 
+        alt={name} 
+        className="badge-image-el"
+      />
+    );
+  }
+
   switch (cleanName) {
     // Speed badges
     case 'novice':

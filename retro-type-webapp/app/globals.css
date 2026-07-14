@@ -1651,7 +1651,7 @@ body::after {
 }
 
 .about-section-label {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: normal;
   letter-spacing: 4px;
   color: var(--color-gold);
@@ -1679,7 +1679,7 @@ body::after {
 }
 
 .about-hero-title {
-  font-size: 42px;
+  font-size: 48px;
   color: var(--color-cream);
   margin-bottom: 20px;
   letter-spacing: 0.5px;
@@ -1687,7 +1687,7 @@ body::after {
 }
 
 .about-hero-description {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
   color: #dfd7be;
   margin-bottom: 15px;
@@ -1695,7 +1695,7 @@ body::after {
 }
 
 .about-hero-subdescription {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--color-muted);
   margin-bottom: 35px;
@@ -1751,7 +1751,7 @@ body::after {
 }
 
 .about-feature-title {
-  font-size: 10.5px;
+  font-size: 12.5px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--color-cream);
@@ -1841,7 +1841,7 @@ body::after {
 }
 
 .about-how-title {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-cream);
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -1849,7 +1849,7 @@ body::after {
 }
 
 .about-how-desc {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--color-muted);
   line-height: 1.5;
 }
@@ -1929,20 +1929,20 @@ body::after {
 }
 
 .about-metric-title {
-  font-size: 13.5px;
+  font-size: 15.5px;
   color: var(--color-gold);
   margin-bottom: 6px;
   text-transform: uppercase;
 }
 
 .about-metric-desc {
-  font-size: 11.5px;
+  font-size: 13.5px;
   color: var(--color-muted);
   line-height: 1.4;
 }
 
 .about-quote-footer {
-  font-size: 12.5px;
+  font-size: 14.5px;
   color: var(--color-gold);
   margin-top: 35px;
   letter-spacing: 2px;
@@ -1952,7 +1952,7 @@ body::after {
 
 /* LEVELS & RANKS */
 .about-levels-subtitle {
-  font-size: 14.5px;
+  font-size: 16.5px;
   color: var(--color-muted);
   margin-top: 10px;
   margin-bottom: 30px;
@@ -1992,7 +1992,7 @@ body::after {
 }
 
 .about-rank-name {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--color-cream);
   margin-top: 12px;
   margin-bottom: 4px;
@@ -2000,7 +2000,7 @@ body::after {
 }
 
 .about-rank-wpm {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--color-gold);
   letter-spacing: 0.5px;
   margin-bottom: 10px;
@@ -2008,7 +2008,7 @@ body::after {
 }
 
 .about-rank-desc {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--color-muted);
   line-height: 1.4;
   word-wrap: break-word;
@@ -2095,7 +2095,7 @@ body::after {
 }
 
 .contact-label {
-  font-size: 9.5px;
+  font-size: 11.5px;
   text-transform: uppercase;
   color: var(--color-muted);
   letter-spacing: 0.5px;
@@ -2103,7 +2103,7 @@ body::after {
 }
 
 .contact-link {
-  font-size: 13.5px;
+  font-size: 15.5px;
   color: var(--color-cream);
   text-decoration: none;
   transition: color 0.2s ease;
@@ -2142,7 +2142,7 @@ body::after {
 }
 
 .contact-paper-text {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.8;
   color: #2b1f15;
   margin-bottom: 20px;
@@ -2150,7 +2150,7 @@ body::after {
 }
 
 .contact-paper-signature {
-  font-size: 15px;
+  font-size: 17px;
   color: #402f20;
   font-weight: bold;
   text-align: right;
@@ -2166,11 +2166,13 @@ body::after {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 100px;
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  background-color: var(--badge-border-color, #c59b27);
-  color: var(--badge-text-color, #3e2a14);
+  width: 72px;
+  height: 72px;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+  color: var(--color-cream);
   transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
   text-transform: uppercase;
@@ -2182,20 +2184,11 @@ body::after {
 }
 
 .badge-card::before {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  right: 3px;
-  bottom: 3px;
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  background: var(--badge-bg-color, #fbf8f0);
-  z-index: -1;
-  pointer-events: none;
+  display: none !important;
 }
 
 .badge-card:hover {
-  transform: translateY(-5px) scale(1.06);
+  transform: translateY(-5px) scale(1.08);
 }
 
 .badge-card-mini {
@@ -2203,11 +2196,13 @@ body::after {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  background-color: var(--badge-border-color, #c59b27);
-  color: var(--badge-text-color, #3e2a14);
+  width: 28px;
+  height: 28px;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+  color: var(--color-cream);
   cursor: help;
   transition: all 0.2s ease;
   user-select: none;
@@ -2215,72 +2210,41 @@ body::after {
 }
 
 .badge-card-mini::before {
-  content: '';
-  position: absolute;
-  top: 1.5px;
-  left: 1.5px;
-  right: 1.5px;
-  bottom: 1.5px;
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  background: var(--badge-bg-color, #fbf8f0);
-  z-index: -1;
-  pointer-events: none;
+  display: none !important;
 }
 
 .badge-card-mini:hover {
-  transform: translateY(-2px) scale(1.1);
+  transform: scale(1.15);
 }
 
-/* Bronze Keycap Badge */
-.badge-bronze {
-  --badge-border-color: #a6673a;
-  --badge-bg-color: radial-gradient(circle, #8c532b 0%, #593114 100%);
-  --badge-text-color: #fcf6e8;
-}
-.badge-bronze:hover {
-  --badge-border-color: #ffdcb5;
-}
-
-/* Silver Keycap Badge */
-.badge-silver {
-  --badge-border-color: #a8afb2;
-  --badge-bg-color: radial-gradient(circle, #8c9296 0%, #52585c 100%);
-  --badge-text-color: #ffffff;
-}
-.badge-silver:hover {
-  --badge-border-color: #ffffff;
+/* Image element inside the badge */
+.badge-image-el {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  display: block;
 }
 
-/* Gold Keycap Badge */
-.badge-gold {
-  --badge-border-color: #ffe180;
-  --badge-bg-color: radial-gradient(circle, #d4a92c 0%, #876510 100%);
-  --badge-text-color: #1c1400;
-}
-.badge-gold:hover {
-  --badge-border-color: #ffe69c;
+.badge-card:hover .badge-image-el {
+  transform: scale(1.1) rotate(-3deg);
 }
 
-/* Platinum/Legendary Keycap Badge */
-.badge-platinum {
-  --badge-border-color: #c7e8e8;
-  --badge-bg-color: radial-gradient(circle, #9ec4c4 0%, #4f7878 100%);
-  --badge-text-color: #0a1c1c;
-}
-.badge-platinum:hover {
-  --badge-border-color: #ffffff;
+.badge-card-mini .badge-image-el {
+  width: 24px;
+  height: 24px;
 }
 
 /* Badge name layout in badge-card */
 .badge-name {
-  font-size: 9px;
+  font-size: 11px;
   margin-top: 5px;
   line-height: 1.1;
   max-width: 80px;
   word-wrap: break-word;
   white-space: normal;
   text-align: center;
-  color: inherit;
+  color: #dfd7be;
 }
 
 .badge-icon-svg {
@@ -2345,6 +2309,7 @@ body::after {
 .about-rank-name,
 .about-quote-footer {
   font-family: 'Special Elite', var(--font-mono), monospace !important;
+  font-weight: 600 !important;
 }
 
 
