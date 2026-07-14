@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import BadgeIcon from '../shared/BadgeIcon';
 
 interface LeaderboardEntry {
   username: string;
@@ -142,7 +143,7 @@ export default function Rankings() {
                               className={`badge-card-mini ${badgeClass}`}
                               title={shortBadge}
                             >
-                              {getBadgeAbbreviation(shortBadge)}
+                              <BadgeIcon name={shortBadge} />
                             </span>
                           );
                         })}

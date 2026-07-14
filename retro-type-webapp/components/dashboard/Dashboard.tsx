@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { navigationService } from '@/services/navigation';
 import { useAuth } from '@/hooks/useNavigation';
+import BadgeIcon from '../shared/BadgeIcon';
 
 export default function Dashboard() {
   const { isLoggedIn, userName } = useAuth();
@@ -151,11 +152,15 @@ export default function Dashboard() {
                     No badges awarded yet. Complete typing tests to earn metrics badges.
                   </div>
                 ) : (
-                  badges.map((badge, idx) => (
-                    <span key={idx} className={`badge-card ${getBadgeClass(badge)}`}>
-                      {badge}
-                    </span>
-                  ))
+                  badges.map((badge, idx) => {
+                    const badgeName = badge.split(' (')[0].trim();
+                    return (
+                      <span key={idx} className={`badge-card ${getBadgeClass(badgeName)}`}>
+                        <BadgeIcon name={badgeName} />
+                        <span className="badge-name">{badgeName}</span>
+                      </span>
+                    );
+                  })
                 )}
               </div>
             </div>

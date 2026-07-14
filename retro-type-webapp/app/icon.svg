@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- Paper sheet -->
+  <path d="M6 2h12v6H6V2z" fill="#e5dec9" />
+  <!-- Inner paper lines -->
+  <path d="M8 4h8v1.2H8V4zm0 2h5v1.2H8V6z" fill="#0f0f0e" />
+  <!-- Carriage assembly -->
+  <path d="M2 9h20v2.5H2V9z" fill="#ffffff" />
+  <!-- Platen knobs -->
+  <circle cx="1" cy="10.25" r="1.5" fill="#ffffff" />
+  <circle cx="23" cy="10.25" r="1.5" fill="#ffffff" />
+  <!-- Typewriter body -->
+  <path d="M3.5 12.5h17l1.5 8.5H2L3.5 12.5z" fill="#c59b27" />
+  <!-- Keyboard background window -->
+  <rect x="5.5" y="14.5" width="13" height="4.5" rx="0.5" fill="#0f0f0e" />
+  <!-- Keycaps -->
+  <circle cx="7.5" cy="15.8" r="1.1" fill="#ffffff" />
+  <circle cx="10.5" cy="15.8" r="1.1" fill="#ffffff" />
+  <circle cx="13.5" cy="15.8" r="1.1" fill="#ffffff" />
+  <circle cx="16.5" cy="15.8" r="1.1" fill="#ffffff" />
+  <circle cx="9" cy="17.4" r="1.1" fill="#ffffff" />
+  <circle cx="12" cy="17.4" r="1.1" fill="#ffffff" />
+  <circle cx="15" cy="17.4" r="1.1" fill="#ffffff" />
+</svg>
