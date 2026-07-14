@@ -1,0 +1,51 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: retro-type-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: retro_type
+    ports:
+      - "5434:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d retro_type"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  db-push:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    container_name: retro-type-db-push
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/retro_type
+    depends_on:
+      db:
+        condition: service_healthy
+    command: npm run db:push
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: retro-type-api
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/retro_type
+      - SESSION_SECRET=retro_type_secret_key_12345
+      - NODE_ENV=production
+    depends_on:
+      db:
+        condition: service_healthy
+      db-push:
+        condition: service_completed_successfully
+
+volumes:
+  pgdata:
