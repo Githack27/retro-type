@@ -89,56 +89,6 @@ export default function BadgeIcon({ name, className = "badge-icon-svg" }: BadgeI
         </svg>
       );
 
-    // Accuracy badges
-    case 'laser precision':
-      return (
-        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10" />
-          <circle cx="12" cy="12" r="6" />
-          <circle cx="12" cy="12" r="2" fill="currentColor" />
-          <path d="M12 2v20M2 12h20" strokeWidth="2.5" />
-        </svg>
-      );
-    case 'sniper':
-      return (
-        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="9" />
-          <circle cx="12" cy="12" r="3" fill="currentColor" />
-          <path d="M12 1v22M1 12h22" />
-        </svg>
-      );
-    case 'steady fingers':
-      return (
-        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 2c-.6 0-1 .4-1 1v7c0 .6.4 1 1 1s1-.4 1-1V3c0-.6-.4-1-1-1zm5 2c-.6 0-1 .4-1 1v6c0 .6.4 1 1 1s1-.4 1-1V5c0-.6-.4-1-1-1zM7 5c-.6 0-1 .4-1 1v6c0 .6.4 1 1 1s1-.4 1-1V6c0-.6-.4-1-1-1zm15 6v7a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-7c0-.6-.4-1-1-1s-1 .4-1 1v7c0 3 2.5 5 5.5 5h10.5c3 0 5.5-2 5.5-5v-7c0-.6-.4-1-1-1z" />
-        </svg>
-      );
-
-    // Volume badges
-    case 'grandmaster':
-      return (
-        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 4l3 3-3 3-3-3z" fill="currentColor" />
-          <path d="M4 8l4 10h8l4-10" />
-          <path d="M2 20h20v2H2z" fill="currentColor" />
-        </svg>
-      );
-    case 'wordsmith':
-      return (
-        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M14.5 17.5L3 6V3h3l11.5 11.5z" />
-          <path d="M13 19l4 4 4-4-4-4z" fill="currentColor" />
-        </svg>
-      );
-    case 'keyboard enthusiast':
-      return (
-        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="2.5" />
-          <rect x="7" y="7" width="10" height="10" rx="1" fill="currentColor" fillOpacity="0.1" />
-          <path d="M6 20h12" />
-        </svg>
-      );
-
     default:
       // Fallback star
       return (

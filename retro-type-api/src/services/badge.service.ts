@@ -21,50 +21,24 @@ export class BadgeService {
 
     const targetBadges: string[] = [];
 
-    // 1. Speed Badge (strictly one matching badge based on current average WPM and Accuracy)
+    // 1. Speed Badge (strictly one matching badge based on current average WPM)
     let speedBadge = 'Novice';
-    if (avgWpm >= 150 && avgAccuracy >= 98) {
+    if (avgWpm >= 150) {
       speedBadge = 'Legend';
-    } else if (avgWpm >= 120 && avgAccuracy >= 95) {
+    } else if (avgWpm >= 120) {
       speedBadge = 'Maestro';
-    } else if (avgWpm >= 100 && avgAccuracy >= 95) {
+    } else if (avgWpm >= 100) {
       speedBadge = 'Author';
-    } else if (avgWpm >= 80 && avgAccuracy >= 90) {
+    } else if (avgWpm >= 80) {
       speedBadge = 'Scribe';
-    } else if (avgWpm >= 60 && avgAccuracy >= 90) {
+    } else if (avgWpm >= 60) {
       speedBadge = 'Typist';
-    } else if (avgWpm >= 40 && avgAccuracy >= 90) {
+    } else if (avgWpm >= 40) {
       speedBadge = 'Writer';
-    } else if (avgWpm >= 20 && avgAccuracy >= 85) {
+    } else if (avgWpm >= 20) {
       speedBadge = 'Apprentice';
     }
     targetBadges.push(speedBadge);
-
-    // 2. Accuracy Badge (strictly one highest matching badge, or none)
-    let accuracyBadge: string | null = null;
-    if (avgAccuracy >= 98) {
-      accuracyBadge = 'Laser Precision';
-    } else if (avgAccuracy >= 95) {
-      accuracyBadge = 'Sniper';
-    } else if (avgAccuracy >= 90) {
-      accuracyBadge = 'Steady Fingers';
-    }
-    if (accuracyBadge) {
-      targetBadges.push(accuracyBadge);
-    }
-
-    // 3. Volume Badge (strictly one highest matching badge, or none)
-    let volumeBadge: string | null = null;
-    if (totalSessions >= 50) {
-      volumeBadge = 'Grandmaster';
-    } else if (totalSessions >= 20) {
-      volumeBadge = 'Wordsmith';
-    } else if (totalSessions >= 5) {
-      volumeBadge = 'Keyboard Enthusiast';
-    }
-    if (volumeBadge) {
-      targetBadges.push(volumeBadge);
-    }
 
     // Reconcile with database
     const existingBadges = await this.badgeRepository.findByUserId(userId);

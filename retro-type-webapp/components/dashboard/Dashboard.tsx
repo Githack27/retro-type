@@ -76,22 +76,18 @@ export default function Dashboard() {
     if (
       name.includes('maestro') ||
       name.includes('author') ||
-      name.includes('scribe') ||
-      name.includes('precision') ||
-      name.includes('grandmaster')
+      name.includes('scribe')
     ) {
       return 'badge-platinum';
     }
     if (
       name.includes('typist') ||
-      name.includes('apprentice') ||
       name.includes('writer') ||
-      name.includes('sniper') ||
-      name.includes('wordsmith')
+      name.includes('apprentice')
     ) {
       return 'badge-silver';
     }
-    return 'badge-bronze'; // Novice, Steady Fingers, Keyboard Enthusiast
+    return 'badge-bronze'; // Novice
   };
 
   if (!isLoggedIn) {

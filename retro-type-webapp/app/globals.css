@@ -1328,16 +1328,16 @@ body::after {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 150px;
-  height: 150px;
+  width: 75px;
+  height: 75px;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   background-color: var(--badge-border-color, #c59b27);
   color: #3e2a14;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 8px;
   line-height: 1.25;
   text-align: center;
-  padding: 12px;
+  padding: 6px;
   transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
   text-transform: uppercase;
@@ -2222,8 +2222,8 @@ body::after {
 
 /* Image element inside the badge */
 .badge-image-el {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   object-fit: contain;
   transition: transform 0.3s ease;
   display: block;
@@ -2240,10 +2240,10 @@ body::after {
 
 /* Badge name layout in badge-card */
 .badge-name {
-  font-size: 13px;
-  margin-top: 5px;
+  font-size: 10px;
+  margin-top: 2px;
   line-height: 1.1;
-  max-width: 80px;
+  max-width: 60px;
   word-wrap: break-word;
   white-space: normal;
   text-align: center;
@@ -2251,8 +2251,8 @@ body::after {
 }
 
 .badge-icon-svg {
-  width: 64px;
-  height: 64px;
+  width: 32px;
+  height: 32px;
   margin-bottom: 2px;
   opacity: 0.95;
   transition: transform 0.3s ease;
