@@ -8,7 +8,7 @@ interface BadgeIconProps {
 export default function BadgeIcon({ name, className = "badge-icon-svg" }: BadgeIconProps) {
   const cleanName = name.split(' (')[0].trim().toLowerCase();
 
-  const imageBadges = ['novice', 'apprentice', 'writer', 'typist'];
+  const imageBadges = ['novice', 'apprentice', 'writer', 'typist', 'scribe', 'author', 'maestro', 'legend'];
   if (imageBadges.includes(cleanName)) {
     return (
       <img 

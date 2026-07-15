@@ -2231,8 +2231,8 @@ body::after {
 }
 
 .badge-card-mini .badge-image-el {
-  width: 30px;
-  height: 30px;
+  width: 100%;
+  height: 100%;
 }
 
 /* Badge name layout in badge-card */
@@ -2270,8 +2270,8 @@ body::after {
 }
 
 .badge-card-mini .badge-icon-svg {
-  width: 30px;
-  height: 30px;
+  width: 100%;
+  height: 100%;
   margin-bottom: 0;
   opacity: 0.95;
   stroke: #ffffff !important;
