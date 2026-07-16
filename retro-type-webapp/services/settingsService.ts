@@ -36,7 +36,7 @@ const DEFAULT_SETTINGS: SettingsState = {
   playSoundOnError: 'off',
   playTimeWarning: 'off',
   fontSize: 2,
-  fontFamily: 'Roboto Mono',
+  fontFamily: 'Special Elite',
   localFont: '',
 };
 
@@ -120,7 +120,7 @@ class SettingsService {
   }
 
   async updateSetting<K extends keyof SettingsState>(key: K, value: SettingsState[K]) {
-    this.state[key] = value;
+    this.state = { ...this.state, [key]: value };
     localStorage.setItem('retro_type_settings', JSON.stringify(this.state));
     this.notify();
 

@@ -23,6 +23,9 @@ export default function Settings() {
       playClickSound(value as string, settings.soundVolume, 'a');
     } else if (key === 'playSoundOnError') {
       playErrorSound(value as string, settings.soundVolume);
+    } else if (key === 'soundVolume') {
+      const sampleSound = settings.playSoundOnClick === 'off' ? 'click' : settings.playSoundOnClick;
+      playClickSound(sampleSound, value as number, 'a');
     }
   };
 
@@ -49,7 +52,7 @@ export default function Settings() {
     'Iosevka', 'Itim', 'JetBrains Mono', 'Kanit', 'Lalezar', 'Lato',
     'Lexend Deca', 'Mononoki', 'Montserrat', 'Noto Naskh Arabic', 'Noto Sans Lao', 'Nunito',
     'Open Dyslexic', 'Overpass Mono', 'Oxygen', 'Parkinsans', 'Proto', 'Roboto',
-    'Roboto Mono', 'Sarabun', 'Source Code Pro', 'Space Grotesk', 'Titillium Web', 'Ubuntu',
+    'Roboto Mono', 'Sarabun', 'Source Code Pro', 'Space Grotesk', 'Special Elite', 'Titillium Web', 'Ubuntu',
     'Ubuntu Mono', 'custom'
   ];
 
