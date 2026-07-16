@@ -8,13 +8,8 @@
 }
 .metrics-card-paper {
   width: 100%;
-  background-color: #eae7e0;
-  background-image: 
-    linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.4) 48%, rgba(0,0,0,0.12) 49%, rgba(0,0,0,0.06) 51%, rgba(255,255,255,0) 55%),
-    linear-gradient(45deg, rgba(255,255,255,0) 40%, rgba(255,255,255,0.3) 44%, rgba(0,0,0,0.1) 45%, rgba(0,0,0,0.05) 47%, rgba(255,255,255,0) 52%),
-    radial-gradient(circle at 80% 20%, rgba(139,90,43,0.04) 0%, rgba(139,90,43,0.01) 45%, transparent 70%),
-    radial-gradient(circle at 15% 75%, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.01) 30%, transparent 60%),
-    linear-gradient(to right, #ece8df 0%, #e6e2da 30%, #e3dfd6 70%, #dcd8ce 100%);
+  background-color: #ffffff;
+  background-image: none;
   color: #2b251a;
   padding: 40px;
   border: 1.5px solid #b8b0a0;
