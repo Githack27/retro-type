@@ -14,7 +14,7 @@ async function startServer() {
   while (attempt <= maxRetries) {
     try {
       console.log(`[Database] Attempting schema sync (attempt ${attempt}/${maxRetries})...`);
-      execSync('npx drizzle-kit push', { stdio: 'inherit' });
+      execSync('npx drizzle-kit push --force', { stdio: 'inherit' });
       console.log('[Database] Schema sync completed successfully.');
       break;
     } catch (err: any) {

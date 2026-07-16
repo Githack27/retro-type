@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { settingsService, type SettingsState } from '@/services/settingsService';
 import { playClickSound, playErrorSound, playWarningSound } from '@/services/soundSynth';
+import { loadGoogleFont } from '@/services/fontLoader';
 import './Typer.css';
 
 const UNIQUE_WORDS = [
@@ -102,6 +103,12 @@ export default function Typer({ onComplete }: TyperProps) {
   useEffect(() => {
     return settingsService.subscribe((s) => setSettings(s));
   }, []);
+
+  useEffect(() => {
+    if (settings?.fontFamily) {
+      loadGoogleFont(settings.fontFamily);
+    }
+  }, [settings?.fontFamily]);
 
   useEffect(() => {
     resetTest(true);
@@ -426,6 +433,14 @@ export default function Typer({ onComplete }: TyperProps) {
         <div 
           ref={textContainerRef}
           className="words-scroller-container"
+          style={{
+            fontFamily: (settings?.localFont && settings.localFont.trim() !== '') 
+              ? `'${settings.localFont}', monospace` 
+              : settings?.fontFamily 
+                ? `'${settings.fontFamily}', monospace` 
+                : undefined,
+            fontSize: settings?.fontSize ? `${settings.fontSize}rem` : undefined
+          }}
         >
           {words.map((word, wordIndex) => {
             const wordStartIdx = charOffsetAccumulator;

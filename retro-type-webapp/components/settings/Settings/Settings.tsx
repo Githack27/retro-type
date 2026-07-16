@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { settingsService, SettingsState } from '@/services/settingsService';
 import { playClickSound, playErrorSound } from '@/services/soundSynth';
-import { applySettingsStyles } from '@/services/fontLoader';
 import './Settings.css';
 
 export default function Settings() {
@@ -10,7 +9,6 @@ export default function Settings() {
   useEffect(() => {
     const unsub = settingsService.subscribe((s) => {
       setSettings(s);
-      applySettingsStyles(s.fontFamily, s.localFont, s.fontSize);
     });
     return unsub;
   }, []);
