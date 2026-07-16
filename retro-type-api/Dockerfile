@@ -17,6 +17,7 @@ RUN npm ci --omit=dev
 
 # Copy compiled code from builder
 COPY --from=builder /app/dist ./dist
+COPY drizzle.config.js ./
 
 EXPOSE 5000
 CMD ["node", "dist/index.js"]
