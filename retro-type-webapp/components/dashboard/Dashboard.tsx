@@ -86,6 +86,9 @@ export default function Dashboard() {
       return 'badge-silver';
     }
     return 'badge-bronze';
+  };
+
+  return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', padding: '0 20px' }}>
       <div className="welcome-divider-container" style={{ marginBottom: '15px' }}>
         <div className="divider-line" />

@@ -18,6 +18,10 @@ export default function Playground() {
   const handleTestComplete = async (finalMetrics: TypingMetrics) => {
     setMetrics(finalMetrics);
 
+    if (finalMetrics.failed) {
+      return;
+    }
+
     if (navigationService.getIsLoggedIn()) {
       try {
         const response = await fetch('/api/typing/session', {

@@ -50,6 +50,11 @@ export default function Rankings() {
       if (match) return match;
     }
     return normalized[0];
+  };
+
+  const getBadgeClass = (badgeName: string | null) => {
+    if (!badgeName) return 'badge-bronze';
+    const name = badgeName.toLowerCase();
     if (name.includes('legend')) {
       return 'badge-gold';
     }
@@ -68,6 +73,9 @@ export default function Rankings() {
       return 'badge-silver';
     }
     return 'badge-bronze';
+  };
+
+  return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', padding: '0 20px' }}>
       <div className="welcome-divider-container" style={{ marginBottom: '22px' }}>
         <div className="divider-line" />

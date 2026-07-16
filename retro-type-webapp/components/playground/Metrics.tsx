@@ -22,11 +22,13 @@ export default function Metrics({
   newAccuracy = 0, 
   onRestart 
 }: MetricsProps) {
-  const targetWpm = newWpm > 0 ? newWpm : metrics.wpm;
-  const targetAcc = newAccuracy > 0 ? newAccuracy : metrics.accuracy;
+  const targetWpm = metrics.failed ? 0 : (newWpm > 0 ? newWpm : metrics.wpm);
+  const targetAcc = metrics.failed ? 0 : (newAccuracy > 0 ? newAccuracy : metrics.accuracy);
 
   let wpmTier = 'NOVICE';
-  if (targetWpm >= 150 && targetAcc >= 98) {
+  if (metrics.failed) {
+    wpmTier = 'FAILED';
+  } else if (targetWpm >= 150 && targetAcc >= 98) {
     wpmTier = 'LEGEND';
   } else if (targetWpm >= 120 && targetAcc >= 95) {
     wpmTier = 'MAESTRO';
@@ -54,7 +56,9 @@ export default function Metrics({
 
         
         <div className="metrics-header">
-          <h3 className="metrics-title">TYPING PERFORMANCE CARD</h3>
+          <h3 className="metrics-title" style={metrics.failed ? { color: '#8a251b' } : {}}>
+            {metrics.failed ? 'TEST FAILED' : 'TYPING PERFORMANCE CARD'}
+          </h3>
           <div className="card-serial">NO. {attemptNumber || 1}</div>
           <div className="typewriter-line" />
         </div>
@@ -64,21 +68,21 @@ export default function Metrics({
           
           <div className="metrics-left-column">
             
-            <div className="metric-box-item">
+            <div className="metric-box-item" style={metrics.failed ? { opacity: 0.5 } : {}}>
               <span className="metric-label">WORDS / MIN</span>
-              <span className="metric-value wpm-val">{metrics.wpm}</span>
+              <span className="metric-value wpm-val">{metrics.failed ? 0 : metrics.wpm}</span>
               <span className="metric-subtext">5-char standard</span>
             </div>
 
             
-            <div className="metric-box-item">
+            <div className="metric-box-item" style={metrics.failed ? { opacity: 0.5 } : {}}>
               <span className="metric-label">LETTERS / MIN</span>
-              <span className="metric-value lpm-val">{metrics.lpm}</span>
+              <span className="metric-value lpm-val">{metrics.failed ? 0 : metrics.lpm}</span>
               <span className="metric-subtext">total correct keys</span>
             </div>
 
             
-            <div className="metric-box-item">
+            <div className="metric-box-item" style={metrics.failed ? { opacity: 0.5 } : {}}>
               <span className="metric-label">ACCURACY</span>
               <span className="metric-value accuracy-val">{metrics.accuracy}%</span>
               <span className="metric-subtext">{metrics.correctKeystrokes} of {metrics.totalKeystrokes} keys</span>
@@ -90,6 +94,18 @@ export default function Metrics({
             <div className="metric-box-item details-box">
               <span className="metric-label">DIAGNOSTICS</span>
               <div className="diagnostics-list">
+                {metrics.failed && (
+                  <div className="diag-row" style={{ color: '#8a251b', fontWeight: 'bold' }}>
+                    <span>TEST STATUS:</span>
+                    <span className="diag-val">FAILED</span>
+                  </div>
+                )}
+                {metrics.failed && metrics.failReason && (
+                  <div className="diag-row" style={{ color: '#8a251b', fontWeight: 'bold', marginBottom: '10px' }}>
+                    <span>FAIL REASON:</span>
+                    <span className="diag-val">{metrics.failReason.toUpperCase()} THRESHOLD</span>
+                  </div>
+                )}
                 <div className="diag-row">
                   <span>TEST DURATION:</span>
                   <span className="diag-val">{metrics.duration} SECONDS</span>

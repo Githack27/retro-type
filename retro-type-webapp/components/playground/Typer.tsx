@@ -1,6 +1,6 @@
-'use client';
-
 import React, { useState, useEffect, useRef } from 'react';
+import { settingsService, type SettingsState } from '../../services/settingsService';
+import { playClickSound, playErrorSound, playWarningSound } from '../../services/soundSynth';
 
 const UNIQUE_WORDS = [
   "carriage", "ribbon", "keys", "platen", "roller", "margin", "tabulator", "shift", "lock",
@@ -69,6 +69,8 @@ export interface TypingMetrics {
   correctKeystrokes: number;
   incorrectKeystrokes: number;
   duration: number;
+  failed?: boolean;
+  failReason?: string;
 }
 
 interface TyperProps {
@@ -94,8 +96,14 @@ export default function Typer({ onComplete }: TyperProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
+  const [settings, setSettings] = useState<SettingsState | null>(null);
+
   useEffect(() => {
-    resetTest();
+    return settingsService.subscribe((s) => setSettings(s));
+  }, []);
+
+  useEffect(() => {
+    resetTest(true);
   }, [includePunctuation, includeNumbers]);
 
   useEffect(() => {
@@ -116,16 +124,67 @@ export default function Typer({ onComplete }: TyperProps) {
     focusInput();
   }, []);
 
+  const triggerFail = (reason: string) => {
+    setIsTesting(false);
+    if (timerRef.current) clearInterval(timerRef.current);
+    
+    const durationMin = (selectedDuration - timeLeft) / 60 || 0.01;
+    let finalCorrectChars = 0;
+    for (let i = 0; i < inputVal.length; i++) {
+      if (inputVal[i] === targetText[i]) {
+        finalCorrectChars++;
+      }
+    }
+    const wpm = Math.round((finalCorrectChars / 5) / durationMin) || 0;
+    const lpm = Math.round(finalCorrectChars / durationMin) || 0;
+    const accuracy = totalKeystrokes.current > 0 
+      ? Math.round((correctKeystrokes.current / totalKeystrokes.current) * 100) 
+      : 100;
+
+    onComplete({
+      wpm,
+      lpm,
+      accuracy: Math.min(100, Math.max(0, accuracy)),
+      totalKeystrokes: totalKeystrokes.current,
+      correctKeystrokes: correctKeystrokes.current,
+      incorrectKeystrokes: totalKeystrokes.current - correctKeystrokes.current,
+      duration: Math.round(selectedDuration - timeLeft),
+      failed: true,
+      failReason: reason,
+    });
+  };
+
   useEffect(() => {
     if (isTesting && timeLeft > 0) {
       timerRef.current = setInterval(() => {
-        setTimeLeft((prev) => prev - 1);
+        setTimeLeft((prev) => {
+          const nextVal = prev - 1;
+          const elapsed = selectedDuration - nextVal;
+          
+          if (settings) {
+            if (settings.minSpeed === 'custom' && elapsed >= 3) {
+              const elapsedMin = elapsed / 60;
+              const currentWpm = Math.round((correctKeystrokes.current / 5) / elapsedMin);
+              if (currentWpm < settings.minSpeedCustom) {
+                setTimeout(() => triggerFail('speed'), 0);
+              }
+            }
+            if (settings.playTimeWarning !== 'off') {
+              const limitStr = settings.playTimeWarning.replace(' seconds', '').replace(' second', '');
+              const limit = parseInt(limitStr) || 0;
+              if (nextVal > 0 && nextVal <= limit) {
+                playWarningSound(settings.soundVolume);
+              }
+            }
+          }
+          return nextVal;
+        });
       }, 1000);
     }
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isTesting, timeLeft]);
+  }, [isTesting, timeLeft, settings]);
 
   useEffect(() => {
     if (isTesting && timeLeft === 0) {
@@ -183,22 +242,66 @@ export default function Typer({ onComplete }: TyperProps) {
       const targetChar = targetText[value.length - 1];
       
       totalKeystrokes.current += 1;
-      if (typedChar === targetChar) {
+      const isCorrect = typedChar === targetChar;
+      
+      if (isCorrect) {
         correctKeystrokes.current += 1;
+      }
+
+      if (settings) {
+        if (isCorrect) {
+          playClickSound(settings.playSoundOnClick, settings.soundVolume, typedChar);
+        } else {
+          playErrorSound(settings.playSoundOnError, settings.soundVolume);
+        }
+
+        if (settings.difficulty === 'master' && !isCorrect) {
+          setInputVal(value);
+          setTimeout(() => triggerFail('master'), 0);
+          return;
+        }
+
+        if (settings.difficulty === 'expert' && typedChar === ' ') {
+          const lastSpaceIdx = value.lastIndexOf(' ', value.length - 2);
+          const start = lastSpaceIdx === -1 ? 0 : lastSpaceIdx + 1;
+          const end = value.length - 1;
+          const typedWord = value.substring(start, end);
+          const targetWord = targetText.substring(start, end);
+          if (typedWord !== targetWord) {
+            setInputVal(value);
+            setTimeout(() => triggerFail('expert'), 0);
+            return;
+          }
+        }
+
+        if (settings.minAccuracy === 'custom' && totalKeystrokes.current >= 5) {
+          const currentAcc = (correctKeystrokes.current / totalKeystrokes.current) * 100;
+          if (currentAcc < settings.minAccuracyCustom) {
+            setInputVal(value);
+            setTimeout(() => triggerFail('accuracy'), 0);
+            return;
+          }
+        }
       }
     }
 
     setInputVal(value);
   };
 
-  const resetTest = () => {
+  const resetTest = (forceNewWords: boolean = false) => {
     if (timerRef.current) clearInterval(timerRef.current);
+    const wasTesting = isTesting;
     setIsTesting(false);
     setTimeLeft(selectedDuration);
     setInputVal('');
-    setWords(generateWords(150, includePunctuation, includeNumbers));
     totalKeystrokes.current = 0;
     correctKeystrokes.current = 0;
+
+    const repeat = settings?.repeatQuotes === 'typing';
+    if (!forceNewWords && repeat && wasTesting) {
+    } else {
+      setWords(generateWords(150, includePunctuation, includeNumbers));
+    }
     setTimeout(() => focusInput(), 50);
   };
 
@@ -216,6 +319,21 @@ export default function Typer({ onComplete }: TyperProps) {
       }
     }
   }, [inputVal]);
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (!settings) return;
+    const key = settings.quickRestart;
+    if (key === 'esc' && e.key === 'Escape') {
+      e.preventDefault();
+      resetTest();
+    } else if (key === 'tab' && e.key === 'Tab') {
+      e.preventDefault();
+      resetTest();
+    } else if (key === 'enter' && e.key === 'Enter') {
+      e.preventDefault();
+      resetTest();
+    }
+  };
 
   let charOffsetAccumulator = 0;
 
@@ -293,6 +411,7 @@ export default function Typer({ onComplete }: TyperProps) {
           ref={textareaRef}
           value={inputVal}
           onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           className="hidden-typer-input"
@@ -323,7 +442,8 @@ export default function Typer({ onComplete }: TyperProps) {
                   const isActive = globalIdx === inputVal.length;
 
                   if (isTyped) {
-                    const isCorrect = inputVal[globalIdx] === char;
+                    const isBlind = settings?.blindMode === 'on';
+                    const isCorrect = isBlind || inputVal[globalIdx] === char;
                     charClass = isCorrect ? 'char-correct' : 'char-incorrect';
                   } else if (isActive && isFocused) {
                     charClass = 'char-untyped cursor-active';
@@ -347,7 +467,8 @@ export default function Typer({ onComplete }: TyperProps) {
                   const isActive = spaceIdx === inputVal.length;
 
                   if (isTyped) {
-                    const isCorrect = inputVal[spaceIdx] === ' ';
+                    const isBlind = settings?.blindMode === 'on';
+                    const isCorrect = isBlind || inputVal[spaceIdx] === ' ';
                     spaceClass = isCorrect ? 'char-correct' : 'char-incorrect';
                   } else if (isActive && isFocused) {
                     spaceClass = 'char-untyped cursor-active';
@@ -372,7 +493,7 @@ export default function Typer({ onComplete }: TyperProps) {
       <div className="reset-button-row">
         <button 
           className="retro-reset-btn"
-          onClick={resetTest}
+          onClick={() => resetTest(true)}
           style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
         >
           <svg 
