@@ -36,7 +36,7 @@ const DEFAULT_SETTINGS: SettingsState = {
   playSoundOnError: 'off',
   playTimeWarning: 'off',
   fontSize: 2,
-  fontFamily: 'Roboto Mono',
+  fontFamily: 'Special Elite',
   localFont: '',
 };
 

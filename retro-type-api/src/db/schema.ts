@@ -44,7 +44,7 @@ export const userSettings = pgTable('user_settings', {
   playSoundOnError: text('play_sound_on_error').default('off').notNull(),
   playTimeWarning: text('play_time_warning').default('off').notNull(),
   fontSize: text('font_size').default('2').notNull(),
-  fontFamily: text('font_family').default('Roboto Mono').notNull(),
+  fontFamily: text('font_family').default('Special Elite').notNull(),
   localFont: text('local_font').default('').notNull(),
 });
 
