@@ -6,12 +6,10 @@ export class AuthService {
   constructor(private userRepository: IUserRepository) {}
 
   async signup(data: { username: string; email: string; secret: string }): Promise<User> {
-    // Basic validation
     if (!data.username || !data.email || !data.secret) {
       throw new Error('Username, email, and secret key (password) are required.');
     }
 
-    // Check if user already exists
     const existingUserByUsername = await this.userRepository.findByUsername(data.username);
     if (existingUserByUsername) {
       throw new Error('Callsign username is already registered.');
@@ -22,7 +20,6 @@ export class AuthService {
       throw new Error('Email is already registered.');
     }
 
-    // Hash password
     const salt = await bcryptjs.genSalt(10);
     const passwordHash = await bcryptjs.hash(data.secret, salt);
 
@@ -40,7 +37,6 @@ export class AuthService {
       throw new Error('Identity (email/username) and secret key are required.');
     }
 
-    // Find user by email or username
     let user: User | null = null;
     if (data.identity.includes('@')) {
       user = await this.userRepository.findByEmail(data.identity);
@@ -52,7 +48,6 @@ export class AuthService {
       throw new Error('Operator credentials invalid.');
     }
 
-    // Verify password
     const isMatch = await bcryptjs.compare(data.secret, user.passwordHash);
     if (!isMatch) {
       throw new Error('Operator credentials invalid.');

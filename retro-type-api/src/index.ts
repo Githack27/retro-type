@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 5000;
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function startServer() {
-  // Sync DB schema
   const maxRetries = 5;
   let attempt = 1;
   while (attempt <= maxRetries) {
@@ -29,7 +28,6 @@ async function startServer() {
     }
   }
 
-  // Cleanup invalid badges
   try {
     console.log('[Database] Cleaning up invalid badges...');
     await db.delete(userBadges).where(

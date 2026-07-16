@@ -13,7 +13,6 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // If user navigates to dashboard but is not logged in, redirect them home
     if (!isLoggedIn) {
       navigationService.navigate('home');
       return;
@@ -50,7 +49,6 @@ export default function Dashboard() {
   const generateHeatmapDates = () => {
     const dates = [];
     const today = new Date();
-    // last 60 days
     for (let i = 59; i >= 0; i--) {
       const d = new Date();
       d.setDate(today.getDate() - i);
@@ -87,14 +85,7 @@ export default function Dashboard() {
     ) {
       return 'badge-silver';
     }
-    return 'badge-bronze'; // Novice
-  };
-
-  if (!isLoggedIn) {
-    return null;
-  }
-
-  return (
+    return 'badge-bronze';
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', padding: '0 20px' }}>
       <div className="welcome-divider-container" style={{ marginBottom: '15px' }}>
         <div className="divider-line" />
@@ -107,7 +98,7 @@ export default function Dashboard() {
       </h1>
 
       <div className="dashboard-grid">
-        {/* LEFT: Stats & Badges */}
+        
         <div className="dashboard-card">
           <div className="dashboard-card-title">
             <span>Performance Card</span>
@@ -164,7 +155,7 @@ export default function Dashboard() {
           )}
         </div>
 
-        {/* RIGHT: Heatmap & Actions */}
+        
         <div className="dashboard-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div>
             <div className="dashboard-card-title">

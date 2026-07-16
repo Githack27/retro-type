@@ -4,7 +4,7 @@ import BadgeIcon from '../shared/BadgeIcon';
 export default function About() {
   return (
     <div className="about-container" id="about-screen">
-      {/* ✦ HERO SECTION ✦ */}
+      
       <section className="about-hero-section">
         <div className="about-hero-left">
           <div className="typewriter-image-wrapper">
@@ -83,7 +83,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ✦ HOW IT WORKS ✦ */}
+      
       <section className="about-section about-how-it-works">
         <div className="about-section-label">
           <span className="dot-decor">✦</span> HOW IT WORKS <span className="dot-decor">✦</span>
@@ -145,13 +145,13 @@ export default function About() {
         </div>
       </section>
 
-      {/* ✦ METRICS EXPLAINED ✦ */}
+      
       <section className="about-section about-metrics-explained">
         <div className="about-section-label">
           <span className="dot-decor">✦</span> METRICS EXPLAINED <span className="dot-decor">✦</span>
         </div>
         <div className="about-metrics-grid">
-          {/* Card 1 */}
+          
           <div className="about-metric-card">
             <div className="about-metric-left">
               <div className="about-metric-icon-circle">WPM</div>
@@ -161,7 +161,7 @@ export default function About() {
               <p className="about-metric-desc">Shows how many words you type correctly in one minute.</p>
             </div>
           </div>
-          {/* Card 2 */}
+          
           <div className="about-metric-card">
             <div className="about-metric-left">
               <div className="about-metric-icon-circle accent">RAW</div>
@@ -171,7 +171,7 @@ export default function About() {
               <p className="about-metric-desc">Your total typing speed including errors. Shows your true keystroke speed.</p>
             </div>
           </div>
-          {/* Card 3 */}
+          
           <div className="about-metric-card">
             <div className="about-metric-left">
               <div className="about-metric-icon-circle">
@@ -190,7 +190,7 @@ export default function About() {
               <p className="about-metric-desc">The percentage of correct characters you type. Accuracy is everything!</p>
             </div>
           </div>
-          {/* Card 4 */}
+          
           <div className="about-metric-card">
             <div className="about-metric-left">
               <div className="about-metric-icon-circle">
@@ -208,7 +208,7 @@ export default function About() {
               <p className="about-metric-desc">Total number of keystrokes you make, including spaces, backspaces, and corrections.</p>
             </div>
           </div>
-          {/* Card 5 */}
+          
           <div className="about-metric-card">
             <div className="about-metric-left">
               <div className="about-metric-icon-circle accent">
@@ -224,7 +224,7 @@ export default function About() {
               <p className="about-metric-desc">The number of mistakes made while typing. Fewer errors, higher the score.</p>
             </div>
           </div>
-          {/* Card 6 */}
+          
           <div className="about-metric-card">
             <div className="about-metric-left">
               <div className="about-metric-icon-circle">
@@ -243,7 +243,7 @@ export default function About() {
         <div className="about-quote-footer">★ Focus on accuracy. Speed will follow. ★</div>
       </section>
 
-      {/* ✦ LEVELS & RANKS ✦ */}
+      
       <section className="about-section about-levels-ranks">
         <div className="about-section-label">
           <span className="dot-decor">✦</span> LEVELS &amp; RANKS <span className="dot-decor">✦</span>
@@ -252,7 +252,7 @@ export default function About() {
           The faster you type, the higher you rise. Here are the ranks you can achieve!
         </p>
         <div className="about-ranks-row">
-          {/* Rank 1 */}
+          
           <div className="about-rank-card">
             <div className="badge-card badge-bronze">
               <BadgeIcon name="Novice" />
@@ -261,7 +261,7 @@ export default function About() {
             <span className="about-rank-wpm">0 - 20 WPM</span>
             <p className="about-rank-desc">Every expert was once a beginner.</p>
           </div>
-          {/* Rank 2 */}
+          
           <div className="about-rank-card">
             <div className="badge-card badge-silver">
               <BadgeIcon name="Apprentice" />
@@ -270,7 +270,7 @@ export default function About() {
             <span className="about-rank-wpm">20 - 40 WPM</span>
             <p className="about-rank-desc">You're building speed and consistency.</p>
           </div>
-          {/* Rank 3 */}
+          
           <div className="about-rank-card">
             <div className="badge-card badge-silver">
               <BadgeIcon name="Writer" />
@@ -279,7 +279,7 @@ export default function About() {
             <span className="about-rank-wpm">40 - 60 WPM</span>
             <p className="about-rank-desc">You're on the right track.</p>
           </div>
-          {/* Rank 4 */}
+          
           <div className="about-rank-card">
             <div className="badge-card badge-silver">
               <BadgeIcon name="Typist" />
@@ -288,7 +288,7 @@ export default function About() {
             <span className="about-rank-wpm">60 - 80 WPM</span>
             <p className="about-rank-desc">Words flow faster now. Keep going!</p>
           </div>
-          {/* Rank 5 */}
+          
           <div className="about-rank-card">
             <div className="badge-card badge-platinum">
               <BadgeIcon name="Scribe" />
@@ -297,7 +297,7 @@ export default function About() {
             <span className="about-rank-wpm">80 - 100 WPM</span>
             <p className="about-rank-desc">You have great speed and control.</p>
           </div>
-          {/* Rank 6 */}
+          
           <div className="about-rank-card">
             <div className="badge-card badge-platinum">
               <BadgeIcon name="Author" />
@@ -306,7 +306,7 @@ export default function About() {
             <span className="about-rank-wpm">100 - 120 WPM</span>
             <p className="about-rank-desc">You type with power and precision.</p>
           </div>
-          {/* Rank 7 */}
+          
           <div className="about-rank-card">
             <div className="badge-card badge-platinum">
               <BadgeIcon name="Maestro" />
@@ -315,7 +315,7 @@ export default function About() {
             <span className="about-rank-wpm">120 - 150 WPM</span>
             <p className="about-rank-desc">Exceptional speed. Exceptional you.</p>
           </div>
-          {/* Rank 8 */}
+          
           <div className="about-rank-card">
             <div className="badge-card badge-gold">
               <BadgeIcon name="Legend" />
@@ -330,7 +330,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ✦ CONTACT US ✦ */}
+      
       <section className="about-section about-contact-section">
         <div className="about-section-label">
           <span className="dot-decor">✦</span> CONTACT US <span className="dot-decor">✦</span>

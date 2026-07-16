@@ -6,7 +6,7 @@ export default function Header() {
   const { isLoggedIn, userName } = useAuth();
   return (
     <header className="retro-header">
-      {/* Brand logo - matches top left of reference */}
+      
       <a 
         href="/" 
         className="brand-container" 
@@ -16,22 +16,22 @@ export default function Header() {
           navigationService.navigate('home');
         }}
       >
-        {/* Bolder White Filled Typewriter Vector SVG logo */}
+        
         <svg className="brand-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          {/* Paper sheet rising from carriage */}
+          
           <path d="M6 2h12v6H6V2z" />
-          {/* Inner paper lines */}
+          
           <path d="M8 4h8v1.2H8V4zm0 2h5v1.2H8V6z" fill="#0f0f0e" />
-          {/* Carriage assembly */}
+          
           <path d="M2 9h20v2.5H2V9z" />
-          {/* Platen knobs */}
+          
           <circle cx="1" cy="10.25" r="1.5" />
           <circle cx="23" cy="10.25" r="1.5" />
-          {/* Typewriter trapezoidal body */}
+          
           <path d="M3.5 12.5h17l1.5 8.5H2L3.5 12.5z" />
-          {/* Keyboard background window */}
+          
           <rect x="5.5" y="14.5" width="13" height="4.5" rx="0.5" fill="#0f0f0e" />
-          {/* Keycaps */}
+          
           <circle cx="7.5" cy="15.8" r="1.1" fill="#ffffff" />
           <circle cx="10.5" cy="15.8" r="1.1" fill="#ffffff" />
           <circle cx="13.5" cy="15.8" r="1.1" fill="#ffffff" />
@@ -46,9 +46,9 @@ export default function Header() {
         </span>
       </a>
 
-      {/* Navigation panel - matches top right of reference */}
+      
       <nav className="nav-container" id="header-nav">
-        {/* Practice Item */}
+        
         <a 
           href="#practice" 
           className="nav-item" 
@@ -61,9 +61,9 @@ export default function Header() {
           <div className="nav-icon-circle">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="2.8" />
-              {/* Spacebar */}
+              
               <line x1="7" y1="16" x2="17" y2="16" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" />
-              {/* Keycaps */}
+              
               <circle cx="6" cy="8" r="1.2" />
               <circle cx="10" cy="8" r="1.2" />
               <circle cx="14" cy="8" r="1.2" />
@@ -77,7 +77,7 @@ export default function Header() {
           <span className="nav-text">Practice</span>
         </a>
 
-        {/* Dashboard Item (Visible only for logged in users) */}
+        
         {isLoggedIn && (
           <a 
             href="#dashboard" 
@@ -99,7 +99,7 @@ export default function Header() {
           </a>
         )}
 
-        {/* Rankings Item */}
+        
         <a 
           href="#rankings" 
           className="nav-item" 
@@ -118,7 +118,7 @@ export default function Header() {
           <span className="nav-text">Rankings</span>
         </a>
 
-        {/* Settings Item */}
+        
         <a 
           href="#settings" 
           className="nav-item" 
@@ -137,7 +137,7 @@ export default function Header() {
           <span className="nav-text">Settings</span>
         </a>
 
-        {/* About Item */}
+        
         <a 
           href="#about" 
           className="nav-item" 
@@ -150,16 +150,16 @@ export default function Header() {
           <div className="nav-icon-circle">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2.8" />
-              {/* Lower dot stem */}
+              
               <line x1="12" y1="11" x2="12" y2="17" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" />
-              {/* Upper dot */}
+              
               <circle cx="12" cy="7.5" r="1.6" fill="currentColor" />
             </svg>
           </div>
           <span className="nav-text">About</span>
         </a>
 
-        {/* User Profile Badge (displayed next to Logout when authenticated) */}
+        
         {isLoggedIn && (
           <div className="user-profile-badge" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', cursor: 'default' }}>
             <div className="nav-icon-circle user-badge-icon" style={{ backgroundColor: 'rgba(197, 155, 39, 0.12)', color: 'var(--color-gold)' }}>
@@ -172,7 +172,7 @@ export default function Header() {
           </div>
         )}
 
-        {/* Login / Logout Item */}
+        
         {!isLoggedIn ? (
           <a 
             href="#login" 

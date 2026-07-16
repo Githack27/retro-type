@@ -10,8 +10,6 @@ export default function Playground() {
   const [attemptNumber, setAttemptNumber] = useState<number>(1);
   const [guestAttemptCount, setGuestAttemptCount] = useState<number>(1);
   const [guestSessions, setGuestSessions] = useState<{ wpm: number; accuracy: number }[]>([]);
-
-  // States to hold the average values to pass down to Metrics
   const [prevWpm, setPrevWpm] = useState<number>(0);
   const [prevAccuracy, setPrevAccuracy] = useState<number>(0);
   const [newWpm, setNewWpm] = useState<number>(0);
@@ -49,7 +47,6 @@ export default function Playground() {
         console.error('Failed to save typing session:', error);
       }
     } else {
-      // Guest user: calculate averages locally
       const prevCount = guestSessions.length;
       let sumWpm = 0;
       let sumAcc = 0;
@@ -83,14 +80,14 @@ export default function Playground() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-      {/* Welcome Divider Header */}
+      
       <div className="welcome-divider-container" style={{ marginBottom: '15px' }}>
         <div className="divider-line" />
         <span className="welcome-text">PRACTICE ARENA</span>
         <div className="divider-line" />
       </div>
 
-      {/* Glassmorphic/dark background card overlay wrapping the practice section */}
+      
       <div className="playground-container-overlay">
         {!metrics ? (
           <Typer onComplete={handleTestComplete} />

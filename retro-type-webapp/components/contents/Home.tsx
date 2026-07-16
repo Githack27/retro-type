@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { navigationService } from '@/services/navigation';
 
 export default function Home() {
-  // Listen to Enter keypress to begin and navigate to playground
   useEffect(() => {
     const handleEnterKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Enter') {

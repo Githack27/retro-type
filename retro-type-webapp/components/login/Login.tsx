@@ -45,9 +45,9 @@ export default function Login() {
 
   return (
     <div className="login-backdrop-dim">
-      {/* Retro Index Card / Metal container with left-right row order */}
+      
       <div className="login-card">
-        {/* Close Button to exit login view */}
+        
         <button 
           className="login-close-btn" 
           onClick={handleClose}
@@ -56,7 +56,7 @@ export default function Login() {
           &times;
         </button>
 
-        {/* Left Side: Banner image from public folder */}
+        
         <div className="login-banner-side">
           <div className="login-banner-overlay-tint" />
           <img 
@@ -66,7 +66,7 @@ export default function Login() {
           />
         </div>
 
-        {/* Right Side: Form container with custom transition */}
+        
         <div className="login-form-side">
           {isLogin ? (
             /* LOGIN FORM */
@@ -103,7 +103,7 @@ export default function Login() {
                 />
               </div>
 
-              {/* Remember Me & Forgot Password Row */}
+              
               <div className="form-options-row">
                 <label className="remember-me-label">
                   <input 

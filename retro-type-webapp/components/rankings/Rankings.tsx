@@ -8,8 +8,6 @@ interface LeaderboardEntry {
   totalSessions: number;
   badges: string[];
 }
-
-// Ordered from highest to lowest prestige
 const BADGE_PRIORITY: string[] = [
   'legend',
   'maestro',
@@ -43,7 +41,7 @@ export default function Rankings() {
     }
   };
 
-  /** Return the single highest-prestige badge from a user's badge list */
+  
   const getHighestBadge = (badges: string[]): string | null => {
     if (!badges || badges.length === 0) return null;
     const normalized = badges.map((b) => b.split(' (')[0].trim());
@@ -51,11 +49,7 @@ export default function Rankings() {
       const match = normalized.find((b) => b.toLowerCase() === priority);
       if (match) return match;
     }
-    return normalized[0]; // fallback to first if none matched
-  };
-
-  const getBadgeClass = (badgeName: string) => {
-    const name = badgeName.toLowerCase();
+    return normalized[0];
     if (name.includes('legend')) {
       return 'badge-gold';
     }
@@ -73,10 +67,7 @@ export default function Rankings() {
     ) {
       return 'badge-silver';
     }
-    return 'badge-bronze'; // Novice
-  };
-
-  return (
+    return 'badge-bronze';
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', padding: '0 20px' }}>
       <div className="welcome-divider-container" style={{ marginBottom: '22px' }}>
         <div className="divider-line" />

@@ -16,8 +16,6 @@ export class UserRepository implements IUserRepository {
   }
 
   async findByUsername(username: string): Promise<User | null> {
-    // Perform case-insensitive search or exact search
-    // We will do exact search but can handle lowercase username validation in service
     const result = await db.select().from(users).where(eq(users.username, username)).limit(1);
     return result[0] || null;
   }

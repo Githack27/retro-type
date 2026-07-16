@@ -36,15 +36,12 @@ export class TypingService {
       duration: data.duration,
     };
 
-    // Get previous average metrics
     const prevMetrics = await this.typingSessionRepository.getAverageMetrics(userId);
 
     const session = await this.typingSessionRepository.create(newSession);
 
-    // Get updated average metrics (including the new session)
     const newMetrics = await this.typingSessionRepository.getAverageMetrics(userId);
 
-    // Assess and award eligible badges
     const newlyAwardedBadges = await this.badgeService.checkAndAwardBadges(userId);
 
     return {
@@ -59,7 +56,6 @@ export class TypingService {
   }
 
   async getUserStats(userId: string) {
-    // Automatically recheck and reconcile badges (e.g. migrating old formats)
     await this.badgeService.checkAndAwardBadges(userId);
 
     const averages = await this.typingSessionRepository.getAverageMetrics(userId);
@@ -77,7 +73,7 @@ export class TypingService {
         personalBestAccuracy: personalBests.maxAccuracy,
       },
       badges: badgeList,
-      history: history.slice(0, 10), // Limit history to last 10 sessions for UI listing
+      history: history.slice(0, 10),
     };
   }
 

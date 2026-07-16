@@ -9,7 +9,6 @@ export class AuthController {
       const { username, email, secret } = req.body;
       const user = await this.authService.signup({ username, email, secret });
       
-      // Establish session using cookie-session
       const session = (req as any).session;
       if (session) {
         session.userId = user.id;
@@ -30,7 +29,6 @@ export class AuthController {
       const { identity, secret } = req.body;
       const user = await this.authService.login({ identity, secret });
 
-      // Establish session using cookie-session
       const session = (req as any).session;
       if (session) {
         session.userId = user.id;
@@ -48,7 +46,6 @@ export class AuthController {
 
   logout = async (req: Request, res: Response): Promise<void> => {
     try {
-      // Clear cookie-session
       (req as any).session = null;
       res.status(200).json({ message: 'Session terminated successfully.' });
     } catch (error: any) {

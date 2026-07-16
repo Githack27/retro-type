@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 
-// A diverse bank of unique words to simulate classic typing tests
 const UNIQUE_WORDS = [
   "carriage", "ribbon", "keys", "platen", "roller", "margin", "tabulator", "shift", "lock",
   "spacebar", "return", "bell", "metal", "ink", "paper", "vintage", "antique", "classic",
@@ -19,12 +18,10 @@ const UNIQUE_WORDS = [
   "this", "test"
 ];
 
-// Helper to generate a paragraph of random words without consecutive repeats, optionally including numbers & punctuations
 function generateWords(count: number, includePunctuation: boolean, includeNumbers: boolean): string[] {
   const words: string[] = [];
   
   while (words.length < count) {
-    // Inject a number if enabled
     if (includeNumbers && words.length > 0 && words.length % 7 === 0 && Math.random() > 0.4) {
       const numType = Math.random();
       if (numType < 0.3) {
@@ -43,22 +40,18 @@ function generateWords(count: number, includePunctuation: boolean, includeNumber
     words.push(word);
   }
 
-  // Inject punctuations and capitalization if enabled
   if (includePunctuation) {
     const punctuations = [",", ".", ";", "?", "!"];
     for (let i = 0; i < words.length; i++) {
-      // Capitalize first word or words directly following terminal punctuations
       if (i === 0 || (i > 0 && [".", "?", "!"].some(p => words[i - 1].endsWith(p)))) {
         words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
       }
       
-      // Inject random trailing punctuation
       if (i < words.length - 1 && i % 6 === 0 && i > 0 && Math.random() > 0.3) {
         const p = punctuations[Math.floor(Math.random() * punctuations.length)];
         words[i] = words[i] + p;
       }
     }
-    // Set absolute ending punctuation for the final generated word
     const lastIdx = words.length - 1;
     if (lastIdx >= 0) {
       words[lastIdx] = words[lastIdx].replace(/[.,;?!]$/, "") + ".";
@@ -91,11 +84,9 @@ export default function Typer({ onComplete }: TyperProps) {
   const [inputVal, setInputVal] = useState<string>('');
   const [isFocused, setIsFocused] = useState<boolean>(false);
   
-  // Toggle states for Punctuations and Numbers (multi-select options)
   const [includePunctuation, setIncludePunctuation] = useState<boolean>(false);
   const [includeNumbers, setIncludeNumbers] = useState<boolean>(false);
   
-  // Track total and correct keystrokes for accurate metrics
   const totalKeystrokes = useRef<number>(0);
   const correctKeystrokes = useRef<number>(0);
   
@@ -103,12 +94,10 @@ export default function Typer({ onComplete }: TyperProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Initialize words with selected modes on mount / change
   useEffect(() => {
     resetTest();
   }, [includePunctuation, includeNumbers]);
 
-  // Update timer left when duration changes (only if not testing)
   useEffect(() => {
     if (!isTesting) {
       setTimeLeft(selectedDuration);
@@ -117,19 +106,16 @@ export default function Typer({ onComplete }: TyperProps) {
 
   const targetText = words.join(' ');
 
-  // Focus hidden textarea
   const focusInput = () => {
     if (textareaRef.current) {
       textareaRef.current.focus();
     }
   };
 
-  // Auto focus input on mount
   useEffect(() => {
     focusInput();
   }, []);
 
-  // Timer countdown hook
   useEffect(() => {
     if (isTesting && timeLeft > 0) {
       timerRef.current = setInterval(() => {
@@ -141,7 +127,6 @@ export default function Typer({ onComplete }: TyperProps) {
     };
   }, [isTesting, timeLeft]);
 
-  // Handle test completion when time reaches zero
   useEffect(() => {
     if (isTesting && timeLeft === 0) {
       finishTest();
@@ -157,10 +142,8 @@ export default function Typer({ onComplete }: TyperProps) {
   const finishTest = () => {
     setIsTesting(false);
     
-    // Calculate final metrics
     const durationMin = selectedDuration / 60;
     
-    // Calculate correct letters currently matching the target text in the final input
     let finalCorrectChars = 0;
     for (let i = 0; i < inputVal.length; i++) {
       if (inputVal[i] === targetText[i]) {
@@ -168,11 +151,9 @@ export default function Typer({ onComplete }: TyperProps) {
       }
     }
 
-    // Standard WPM: 5 characters = 1 word
     const wpm = Math.round((finalCorrectChars / 5) / durationMin);
     const lpm = Math.round(finalCorrectChars / durationMin);
     
-    // Accuracy based on actual correct key strikes out of total presses
     const accuracy = totalKeystrokes.current > 0 
       ? Math.round((correctKeystrokes.current / totalKeystrokes.current) * 100) 
       : 100;
@@ -191,14 +172,12 @@ export default function Typer({ onComplete }: TyperProps) {
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
     
-    // Don't allow typing beyond target text
     if (value.length > targetText.length) return;
 
     if (!isTesting && value.length > 0) {
       startTest();
     }
 
-    // Capture keystrokes if the user didn't backspace
     if (value.length > inputVal.length) {
       const typedChar = value[value.length - 1];
       const targetChar = targetText[value.length - 1];
@@ -223,7 +202,6 @@ export default function Typer({ onComplete }: TyperProps) {
     setTimeout(() => focusInput(), 50);
   };
 
-  // Automatically scroll typing text container to keep cursor in view
   useEffect(() => {
     const activeSpan = textContainerRef.current?.querySelector('.cursor-active');
     if (activeSpan && textContainerRef.current) {
@@ -231,7 +209,6 @@ export default function Typer({ onComplete }: TyperProps) {
       const spanTop = (activeSpan as HTMLElement).offsetTop;
       const containerHeight = container.clientHeight;
       
-      // Keep cursor vertically centered or scrolled down appropriately
       if (spanTop > container.scrollTop + containerHeight - 80) {
         container.scrollTop = spanTop - containerHeight / 2;
       } else if (spanTop < container.scrollTop + 20) {
@@ -240,14 +217,13 @@ export default function Typer({ onComplete }: TyperProps) {
     }
   }, [inputVal]);
 
-  // Compute character index offsets dynamically for clean word wrapping rendering
   let charOffsetAccumulator = 0;
 
   return (
     <div className="typer-section-container">
-      {/* Top Left Options: Duration selector, Mode options, and Timer */}
+      
       <div className="typer-controls-row">
-        {/* Retro Sharp Duration Selector Container (Left) */}
+        
         <div className="duration-selector-container">
           <div className="duration-options">
             {durations.map((d) => (
@@ -263,7 +239,7 @@ export default function Typer({ onComplete }: TyperProps) {
           </div>
         </div>
 
-        {/* Retro Sharp Multi-Select Mode Container (Center) */}
+        
         <div className="duration-selector-container">
           <span className="duration-label" style={{ display: 'inline-flex', alignItems: 'center', marginRight: '12px', paddingRight: '8px', borderRight: '1px solid rgba(140, 130, 108, 0.4)' }}>
             <svg 
@@ -300,19 +276,19 @@ export default function Typer({ onComplete }: TyperProps) {
           </div>
         </div>
 
-        {/* Live Timer Running View (Right) */}
+        
         <div className="timer-box">
           <span className="timer-digit">{timeLeft}</span>
           <span className="timer-unit">s</span>
         </div>
       </div>
 
-      {/* Main typewriter text container with glassmorphic paper background */}
+      
       <div 
         className="typewriter-paper-overlay"
         onClick={focusInput}
       >
-        {/* Hidden text area for capturing input natively */}
+        
         <textarea
           ref={textareaRef}
           value={inputVal}
@@ -326,7 +302,7 @@ export default function Typer({ onComplete }: TyperProps) {
           spellCheck="false"
         />
 
-        {/* Highlighted text rendering area with whole-word wrapping */}
+        
         <div 
           ref={textContainerRef}
           className="words-scroller-container"
@@ -363,7 +339,7 @@ export default function Typer({ onComplete }: TyperProps) {
                   );
                 })}
 
-                {/* Trailing space handler inside the word wrap block */}
+                
                 {wordIndex < words.length - 1 && (() => {
                   const spaceIdx = wordStartIdx + word.length;
                   let spaceClass = 'char-untyped';
@@ -392,7 +368,7 @@ export default function Typer({ onComplete }: TyperProps) {
         </div>
       </div>
 
-      {/* Carriage Return Action Button */}
+      
       <div className="reset-button-row">
         <button 
           className="retro-reset-btn"

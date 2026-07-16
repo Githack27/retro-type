@@ -16,7 +16,7 @@ export const typingSessions = pgTable('typing_sessions', {
   totalKeystrokes: integer('total_keystrokes').notNull(),
   correctKeystrokes: integer('correct_keystrokes').notNull(),
   incorrectKeystrokes: integer('incorrect_keystrokes').notNull(),
-  duration: integer('duration').notNull(), // in seconds
+  duration: integer('duration').notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
 

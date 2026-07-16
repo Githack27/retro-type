@@ -22,7 +22,6 @@ export default function Metrics({
   newAccuracy = 0, 
   onRestart 
 }: MetricsProps) {
-  // Determine skill classification based on average WPM and Accuracy
   const targetWpm = newWpm > 0 ? newWpm : metrics.wpm;
   const targetAcc = newAccuracy > 0 ? newAccuracy : metrics.accuracy;
 
@@ -45,40 +44,40 @@ export default function Metrics({
 
   return (
     <div className="metrics-outer-container">
-      {/* Retro Index Card / Typewriter Certificate overlay */}
+      
       <div className="metrics-card-paper">
-        {/* Rivets / Pins in the corner of index card */}
+        
         <div className="card-rivet tl" />
         <div className="card-rivet tr" />
         <div className="card-rivet bl" />
         <div className="card-rivet br" />
 
-        {/* Vintage header */}
+        
         <div className="metrics-header">
           <h3 className="metrics-title">TYPING PERFORMANCE CARD</h3>
           <div className="card-serial">NO. {attemptNumber || 1}</div>
           <div className="typewriter-line" />
         </div>
 
-        {/* 2-Column Row Layout (Left: metrics stacked, Right: Diagnostics details) */}
+        
         <div className="metrics-layout-row">
-          {/* Left Column: Stacked metrics */}
+          
           <div className="metrics-left-column">
-            {/* Words Per Minute (WPM) */}
+            
             <div className="metric-box-item">
               <span className="metric-label">WORDS / MIN</span>
               <span className="metric-value wpm-val">{metrics.wpm}</span>
               <span className="metric-subtext">5-char standard</span>
             </div>
 
-            {/* Letters Per Minute (LPM) */}
+            
             <div className="metric-box-item">
               <span className="metric-label">LETTERS / MIN</span>
               <span className="metric-value lpm-val">{metrics.lpm}</span>
               <span className="metric-subtext">total correct keys</span>
             </div>
 
-            {/* Accuracy */}
+            
             <div className="metric-box-item">
               <span className="metric-label">ACCURACY</span>
               <span className="metric-value accuracy-val">{metrics.accuracy}%</span>
@@ -86,7 +85,7 @@ export default function Metrics({
             </div>
           </div>
 
-          {/* Right Column: Keystrokes Details grid structure */}
+          
           <div className="metrics-right-column">
             <div className="metric-box-item details-box">
               <span className="metric-label">DIAGNOSTICS</span>
@@ -108,7 +107,7 @@ export default function Metrics({
                   <span className="diag-val">{metrics.totalKeystrokes}</span>
                 </div>
                 
-                {/* User lifetime average diagnostics */}
+                
                 <div className="diag-row" style={{ color: 'var(--color-gold)', borderBottom: '1px solid rgba(140, 130, 108, 0.25)', paddingBottom: '4px', fontWeight: 'bold' }}>
                   <span>LIFETIME STATISTICS</span>
                   <span></span>
@@ -134,7 +133,7 @@ export default function Metrics({
           </div>
         </div>
 
-        {/* Vintage red distressed stamp overlay */}
+        
         <div className="ink-stamp-container">
           <div className="ink-stamp-circle">
             <span className="stamp-sub">VERIFIED CLASS</span>
@@ -146,14 +145,14 @@ export default function Metrics({
         </div>
       </div>
 
-      {/* Restart / Return Carriage Buttons */}
+      
       <div className="restart-button-row">
         <button 
           className="green-metal-btn" 
           id="restart-typing-btn"
           onClick={onRestart}
         >
-          {/* Corner Rivets */}
+          
           <div className="btn-rivet rivet-tl" />
           <div className="btn-rivet rivet-tr" />
           <div className="btn-rivet rivet-bl" />
