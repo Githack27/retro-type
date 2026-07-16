@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import Typer, { TypingMetrics } from './Typer';
-import Metrics from './Metrics';
+import Typer, { TypingMetrics } from '@/components/playground/Typer/Typer';
+import Metrics from '@/components/playground/Metrics/Metrics';
 import { navigationService } from '@/services/navigation';
+import './Playground.css';
 
 export default function Playground() {
   const [metrics, setMetrics] = useState<TypingMetrics | null>(null);

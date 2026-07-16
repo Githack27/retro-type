@@ -1,0 +1,31 @@
+.description-text {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-cream);
+  max-width: 550px;
+  margin-bottom: 35px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  opacity: 0.9;
+  font-family: var(--font-serif);
+  letter-spacing: 2px;
+}
+.press-key-prompt {
+  font-size: 11px;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  animation: slow-blink 2.2s infinite ease-in-out;
+}
+@keyframes slow-blink {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.95; }
+}
+@media (max-width: 768px) {
+  .center-logo-title {
+    font-size: 48px;
+    margin-bottom: 15px;
+  }
+  .description-text {
+    font-size: 15px;
+  }
+}

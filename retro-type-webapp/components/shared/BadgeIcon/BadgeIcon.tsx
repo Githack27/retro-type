@@ -1,4 +1,5 @@
 import React from 'react';
+import './BadgeIcon.css';
 
 interface BadgeIconProps {
   name: string;

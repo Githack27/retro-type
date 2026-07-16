@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { navigationService } from '@/services/navigation';
+import './Login.css';
 
 export default function Login() {
   const [isLogin, setIsLogin] = useState(true);

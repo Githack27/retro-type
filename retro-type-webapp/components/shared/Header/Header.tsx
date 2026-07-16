@@ -1,6 +1,7 @@
 import React from 'react';
 import { navigationService } from '@/services/navigation';
 import { useAuth } from '@/hooks/useNavigation';
+import './Header.css';
 
 export default function Header() {
   const { isLoggedIn, userName } = useAuth();

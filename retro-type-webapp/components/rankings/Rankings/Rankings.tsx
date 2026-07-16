@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import BadgeIcon from '../shared/BadgeIcon';
+import BadgeIcon from '@/components/shared/BadgeIcon/BadgeIcon';
+import './Rankings.css';
 
 interface LeaderboardEntry {
   username: string;

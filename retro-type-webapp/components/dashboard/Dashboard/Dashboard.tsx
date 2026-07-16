@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { navigationService } from '@/services/navigation';
 import { useAuth } from '@/hooks/useNavigation';
-import BadgeIcon from '../shared/BadgeIcon';
+import BadgeIcon from '@/components/shared/BadgeIcon/BadgeIcon';
+import './Dashboard.css';
 
 export default function Dashboard() {
   const { isLoggedIn, userName } = useAuth();

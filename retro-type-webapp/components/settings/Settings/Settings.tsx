@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { settingsService, SettingsState } from '../../services/settingsService';
-import { playClickSound, playErrorSound } from '../../services/soundSynth';
-import { applySettingsStyles } from '../../services/fontLoader';
+import { settingsService, SettingsState } from '@/services/settingsService';
+import { playClickSound, playErrorSound } from '@/services/soundSynth';
+import { applySettingsStyles } from '@/services/fontLoader';
+import './Settings.css';
 
 export default function Settings() {
   const [settings, setSettings] = useState<SettingsState | null>(null);

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { settingsService, type SettingsState } from '../../services/settingsService';
-import { playClickSound, playErrorSound, playWarningSound } from '../../services/soundSynth';
+import { settingsService, type SettingsState } from '@/services/settingsService';
+import { playClickSound, playErrorSound, playWarningSound } from '@/services/soundSynth';
+import './Typer.css';
 
 const UNIQUE_WORDS = [
   "carriage", "ribbon", "keys", "platen", "roller", "margin", "tabulator", "shift", "lock",

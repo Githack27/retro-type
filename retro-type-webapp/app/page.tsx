@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import Header from '@/components/shared/Header';
-import ContentArea from '@/components/shared/ContentArea';
-import Footer from '@/components/shared/Footer';
+import Header from '@/components/shared/Header/Header';
+import ContentArea from '@/components/shared/ContentArea/ContentArea';
+import Footer from '@/components/shared/Footer/Footer';
 import { settingsService } from '@/services/settingsService';
 import { applySettingsStyles } from '@/services/fontLoader';
 

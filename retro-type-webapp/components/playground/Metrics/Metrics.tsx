@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { TypingMetrics } from './Typer';
+import { TypingMetrics } from '@/components/playground/Typer/Typer';
+import './Metrics.css';
 
 interface MetricsProps {
   metrics: TypingMetrics;

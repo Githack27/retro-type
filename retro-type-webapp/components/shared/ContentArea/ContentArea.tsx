@@ -1,12 +1,13 @@
 import React from 'react';
+import './ContentArea.css';
 import { useCurrentRoute } from '@/hooks/useNavigation';
-import Home from '@/components/contents/Home';
-import Playground from '@/components/playground/Playground';
-import Rankings from '@/components/rankings/Rankings';
-import Settings from '@/components/settings/Settings';
-import About from '@/components/contents/About';
-import Login from '@/components/login/Login';
-import Dashboard from '@/components/dashboard/Dashboard';
+import Home from '@/components/contents/Home/Home';
+import Playground from '@/components/playground/Playground/Playground';
+import Rankings from '@/components/rankings/Rankings/Rankings';
+import Settings from '@/components/settings/Settings/Settings';
+import About from '@/components/contents/About/About';
+import Login from '@/components/login/Login/Login';
+import Dashboard from '@/components/dashboard/Dashboard/Dashboard';
 
 export default function ContentArea() {
   const currentRoute = useCurrentRoute();

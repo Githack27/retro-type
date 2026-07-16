@@ -1,5 +1,6 @@
 import React from 'react';
-import BadgeIcon from '../shared/BadgeIcon';
+import BadgeIcon from '@/components/shared/BadgeIcon/BadgeIcon';
+import './About.css';
 
 export default function About() {
   return (

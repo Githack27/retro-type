@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { navigationService } from '@/services/navigation';
+import './Home.css';
 
 export default function Home() {
   useEffect(() => {
